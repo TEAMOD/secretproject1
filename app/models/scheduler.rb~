@@ -1,0 +1,79 @@
+require 'rubygems'
+require 'hpricot'
+require 'open-uri'
+require 'rufus/scheduler'
+
+# Uses the rufus scheduler to check for builds that passed or failed. Performs X10 action with bottlerocket's 'br' command
+# Author: Patrick Foley
+
+class Scheduler
+  include Singleton
+  
+  def start
+    @last = {} 
+    @failing_builds = Set.new  
+     
+    scheduler = Rufus::Scheduler.start_new
+    scheduler.every "10s" do
+      parse(Conf.ruby1_url)
+      parse(Conf.build1_url)
+    end
+  end 
+
+
+  def parse(url)
+    file = open(url);
+    doc = Hpricot.XML(file)
+    file.close
+    # name="2008-07-25-homepage" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2008-10-01T20:51:46"
+    doc.search("/projects/project").each do |project|
+      project_name = project.attributes["name"]
+      status = project.attributes["lastBuildStatus"]
+      time = project.attributes["lastBuildTime"]
+
+      followed_builds = Conf.branches.split(",").map {|x| x.strip}
+
+      if followed_builds.include?(project_name)
+        previous_build = @last[project_name] 
+        @last[project_name] = {"project" => project_name, "time" => time, "status" => status}
+
+        if status.include?("Fail")
+          @failing_builds << project_name
+          on_fail(project_name)
+        elsif !previous_build.nil? && (previous_build["time"] != time) && status.include?("Success")
+          @failing_builds.delete(project_name)
+          if (!previous_build["status"].include?("Fail"))
+            on_pass(project_name)
+            off_pass
+            off_pass
+          elsif @failing_builds.empty?
+            off_fail
+          end
+        end
+      end
+    end
+  end
+    
+  def on_pass(project_name)
+    puts "#{project_name} Bubbles!!!!!"
+    system("br #{Conf.x10_house_code}#{Conf.x10_pass_device} ON")
+    sleep 3
+  end
+
+  def off_pass
+    puts "Bubbles Off"
+    system("br #{Conf.x10_house_code}#{Conf.x10_pass_device} OFF")
+    sleep 2
+  end
+
+  def on_fail(project_name)
+    puts "#{project_name} Red Light!!!"
+    system("br #{Conf.x10_house_code}#{Conf.x10_failure_device} ON")
+  end    
+  
+  def off_fail
+    puts "Light Off"
+    system("br #{Conf.x10_house_code}#{Conf.x10_failure_device} OFF")
+  end
+      
+end

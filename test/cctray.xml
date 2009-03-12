@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Projects>
+<Project name="cce-release-jdk1.4" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2008-09-25T16:14:41" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cce-release-jdk1.4"/>
+<Project name="cce-release-jdk1.5" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="" lastBuildTime="2008-09-24T08:23:18" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cce-release-jdk1.5"/>
+<Project name="cce-release-jdk1.6" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.72" lastBuildTime="2008-08-12T08:20:22" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cce-release-jdk1.6"/>
+<Project name="cclive-release-jdk1.4" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2008-09-24T06:36:56" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cclive-release-jdk1.4"/>
+<Project name="cclive-release-jdk1.5" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2008-09-24T06:29:41" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cclive-release-jdk1.5"/>
+<Project name="cclive-release-jdk1.6" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2008-09-24T07:21:15" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/cclive-release-jdk1.6"/>
+<Project name="contrib-distributed-jdk1.5" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.23" lastBuildTime="2008-09-24T07:02:15" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/contrib-distributed-jdk1.5"/>
+<Project name="contrib-distributed-jdk1.6" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.23" lastBuildTime="2008-09-24T07:21:58" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/contrib-distributed-jdk1.6"/>
+<Project name="JC Test" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.32" lastBuildTime="2008-09-24T08:59:35" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/JC Test"/>
+<Project name="test42" activity="Sleeping" lastBuildStatus="Success" lastBuildLabel="build.37" lastBuildTime="2008-09-24T09:06:05" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/test42"/>
+<Project name="website-validation" activity="Sleeping" lastBuildStatus="Failure" lastBuildLabel="" lastBuildTime="2008-09-23T02:03:45" webUrl="http://cclive.thoughtworks.com/dashboard/build/detail/website-validation"/>
+
+</Projects>
